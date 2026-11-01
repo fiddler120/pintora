@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pintora | Pintura y Decoración de Alta Gama</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f1715',
+                            card: '#16221f',
+                            accent: '#d4af37',
+                            gold: '#c5a059',
+                            muted: '#8a9a86',
+                            cream: '#f4f1ea'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #edc967 50%, #a38128 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-bg {
+            background: linear-gradient(135deg, #c5a059 0%, #d4af37 100%);
+        }
+        .image-slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .img-before-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-200 font-sans antialiased selection:bg-brand-accent selection:text-black">
+
+    <!-- Header Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-serif font-bold tracking-wider text-white flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full gold-bg flex items-center justify-center text-brand-dark font-sans text-lg font-bold">P</span>
+                PINTORA
+            </a>
+            
+            <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest text-gray-300">
+                <a href="#inicio" class="hover:text-brand-accent transition">Inicio</a>
+                <a href="#visualizer" class="hover:text-brand-accent transition">Paleta</a>
+                <a href="#proyectos" class="hover:text-brand-accent transition">Proyectos</a>
+                <a href="#cotizador" class="hover:text-brand-accent transition">Cotizador</a>
+            </div>
+
+            <a href="#contacto" class="gold-bg text-brand-dark px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:opacity-90 transition">
+                Contacto
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-20" alt="Interiorismo de alta gama">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-brand-accent uppercase tracking-widest text-xs font-semibold">Pintura & Decoración Exclusiva</span>
+                <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mt-4 mb-6 leading-tight">
+                    Transformamos espacios en <span class="gold-gradient">obras de arte</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                    Especialistas en acabados de alta gama, microcemento, estuco veneciano y soluciones cromáticas avanzadas para residencias y comercios de lujo.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#visualizer" class="gold-bg text-brand-dark px-8 py-4 rounded-full font-bold text-sm tracking-wide uppercase hover:shadow-lg hover:shadow-brand-accent/20 transition">
+                        Probar Simulador
+                    </a>
+                    <a href="#proyectos" class="border border-white/20 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide uppercase hover:bg-white/5 transition">
+                        Ver Portafolio
+                    </a>
+                </div>
+            </div>
+
+            <!-- Before / After Interactive Slider -->
+            <div class="bg-brand-card p-4 rounded-2xl border border-white/10 shadow-2xl">
+                <div id="slider" class="image-slider-container w-full h-[380px] rounded-xl cursor-ew-resize select-none">
+                    <!-- Image After -->
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Después">
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs uppercase tracking-wider">Resultado Pintora</div>
+
+                    <!-- Image Before -->
+                    <div id="before-image" class="img-before-after">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" class="absolute top-0 left-0 h-full w-[500px] object-cover max-w-none" alt="Antes">
+                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs uppercase tracking-wider">Antes</div>
+                    </div>
+
+                    <!-- Divider Bar -->
+                    <div id="slider-bar" class="absolute top-0 bottom-0 w-1 bg-brand-accent left-1/2 -translate-x-1/2 flex items-center justify-center">
+                        <div class="w-8 h-8 rounded-full gold-bg shadow-md flex items-center justify-center text-brand-dark text-xs font-bold">↔</div>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-gray-500 mt-3">Arrastra para comparar el cambio de espacio</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Palette Interactive Visualizer Section -->
+    <section id="visualizer" class="py-20 bg-brand-card/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Simulador de Paletas</h2>
+                <p class="text-gray-400">Haz clic en nuestras colecciones de colores exclusivos para previsualizar el ambiente final de la estancia.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <!-- Color Selector Controls -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-white mb-6">Selecciona una Tonalidad</h3>
+                    
+                    <button onclick="changeRoomColor('#2b3a38', 'Verde Esmeralda Profundo')" class="w-full flex items-center justify-between p-4 rounded-xl bg-brand-dark border border-white/10 hover:border-brand-accent transition group">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-[#2b3a38] border border-white/20"></span>
+                            <span class="text-sm font-semibold group-hover:text-brand-accent">Verde Esmeralda</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                    </button>
+
+                    <button onclick="changeRoomColor('#383633', 'Gris Antracita Cálido')" class="w-full flex items-center justify-between p-4 rounded-xl bg-brand-dark border border-white/10 hover:border-brand-accent transition group">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-[#383633] border border-white/20"></span>
+                            <span class="text-sm font-semibold group-hover:text-brand-accent">Gris Antracita</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                    </button>
+
+                    <button onclick="changeRoomColor('#4a3b32', 'Terracota Elegante')" class="w-full flex items-center justify-between p-4 rounded-xl bg-brand-dark border border-white/10 hover:border-brand-accent transition group">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-[#4a3b32] border border-white/20"></span>
+                            <span class="text-sm font-semibold group-hover:text-brand-accent">Terracota Studio</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                    </button>
+
+                    <button onclick="changeRoomColor('#e6dfd5', 'Blanco Marfil Lino')" class="w-full flex items-center justify-between p-4 rounded-xl bg-brand-dark border border-white/10 hover:border-brand-accent transition group">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-[#e6dfd5] border border-white/20"></span>
+                            <span class="text-sm font-semibold group-hover:text-brand-accent">Blanco Marfil</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                    </button>
+                </div>
+
+                <!-- Visualizer Display Box -->
+                <div class="md:col-span-2 relative h-[400px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center transition-all duration-700" id="room-preview-box" style="background-color: #2b3a38;">
+                    <!-- Overlay furniture mockup -->
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover mix-blend-multiply opacity-80" alt="Mockup de habitación">
+                    <div class="absolute bottom-6 left-6 bg-brand-dark/90 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10">
+                        <span class="text-xs text-gray-400 block">Tono seleccionado:</span>
+                        <span id="selected-color-name" class="text-sm font-bold text-brand-accent">Verde Esmeralda Profundo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="cotizador" class="py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-brand-card p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-serif font-bold text-white mb-2">Calculadora Estimada</h2>
+                    <p class="text-gray-400 text-sm">Obtén un presupuesto orientativo para la renovación de tu espacio</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Superficie estimada (m²)</label>
+                        <input type="number" id="calc-area" value="50" oninput="calculateEstimate()" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Tipo de Acabado</label>
+                        <select id="calc-finish" onchange="calculateEstimate()" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-accent">
+                            <option value="15">Pintura Plástica de Alta Calidad (€15/m²)</option>
+                            <option value="35">Estuco Veneciano Tradicional (€35/m²)</option>
+                            <option value="50">Microcemento de Lujo (€50/m²)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-brand-dark p-6 rounded-2xl border border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div>
+                        <span class="text-xs text-gray-400 block">Presupuesto Estimado</span>
+                        <span id="calc-total" class="text-3xl font-bold gold-gradient">750 €</span>
+                    </div>
+                    <a href="https://wa.me/34000000000?text=Hola,%20me%20interesa%20un%20presupuesto" target="_blank" class="gold-bg text-brand-dark px-6 py-3 rounded-xl font-bold text-sm tracking-wide uppercase hover:opacity-90 transition">
+                        Solicitar Visita Técnica
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contacto" class="border-t border-white/10 py-12 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <h3 class="text-xl font-serif font-bold text-white mb-2">PINTORA</h3>
+                <p class="text-gray-400 text-sm">Estudio de alta decoración y acabados arquitectónicos.</p>
+            </div>
+
+            <div class="flex gap-6 text-xl text-gray-400">
+                <a href="#" class="hover:text-brand-accent transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-brand-accent transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-brand-accent transition"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Interactive Room Color Visualizer Script
+        function changeRoomColor(hexColor, name) {
+            document.getElementById('room-preview-box').style.backgroundColor = hexColor;
+            document.getElementById('selected-color-name').innerText = name;
+        }
+
+        // Calculator Script
+        function calculateEstimate() {
+            const area = parseFloat(document.getElementById('calc-area').value) || 0;
+            const price = parseFloat(document.getElementById('calc-finish').value) || 0;
+            const total = area * price;
+            document.getElementById('calc-total').innerText = total.toLocaleString('es-ES') + ' €';
+        }
+
+        // Before/After Image Slider Script
+        const container = document.getElementById('slider');
+        const beforeImg = document.getElementById('before-image');
+        const sliderBar = document.getElementById('slider-bar');
+
+        let isSliding = false;
+
+        const moveSlider = (x) => {
+            const rect = container.getBoundingClientRect();
+            let position = x - rect.left;
+            if (position < 0) position = 0;
+            if (position > rect.width) position = rect.width;
+            
+            const percentage = (position / rect.width) * 100;
+            beforeImg.style.width = percentage + '%';
+            sliderBar.style.left = percentage + '%';
+        };
+
+        container.addEventListener('mousedown', () => isSliding = true);
+        window.addEventListener('mouseup', () => isSliding = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!isSliding) return;
+            moveSlider(e.clientX);
+        });
+
+        // Touch support for mobile devices
+        container.addEventListener('touchstart', () => isSliding = true);
+        window.addEventListener('touchend', () => isSliding = false);
+        window.addEventListener('touchmove', (e) => {
+            if (!isSliding) return;
+            moveSlider(e.touches[0].clientX);
+        });
+    </script>
+</body>
+</html>
